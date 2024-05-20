@@ -1,0 +1,16 @@
+.cursor {
+  background-color: white;
+  height: 64px;
+  width: 64px;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* For Firefox etc. to force cursor to hidden */
+html,
+body {
+  height: 100%;
+}
