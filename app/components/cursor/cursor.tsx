@@ -5,15 +5,10 @@ import { motion } from "framer-motion";
 
 import "./cursor.css";
 
-interface MousePosition {
+type MousePosition = {
   x: number;
   y: number;
-}
-
-interface Transition {
-  duration: number;
-  ease: string;
-}
+};
 
 interface Variant {
   x: number;
@@ -21,7 +16,10 @@ interface Variant {
   height: number;
   width: number;
   offset: number;
-  transition?: Transition;
+  transition?: {
+    duration: number;
+    ease: string;
+  };
 }
 
 const Cursor = () => {
