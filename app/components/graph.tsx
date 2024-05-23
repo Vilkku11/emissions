@@ -90,24 +90,37 @@ const data = [
 ];
 
 const Graph = () => {
-  const list = [
+  const list: number[][] = [
     [60, 220],
     [70, 250],
     [80, 300],
     [90, 400],
+    [100, 250],
   ];
+
+  const margin: { top: number; right: number; bottom: number; left: number } = {
+    top: 20,
+    right: 20,
+    bottom: 20,
+    left: 20,
+  };
 
   let xScale = d3
     .scaleLinear()
-    .domain(d3.extent(list.map((d) => d[0])))
-    .range([0, 1000]);
+    .domain(d3.extent(data.map((d) => parseInt(d.day))))
+    .range([margin.left, 1000 - margin.right]);
+
+  let yScale = d3
+    .scaleLinear()
+    .domain(d3.extent(data.map((d) => parseInt(d.cycle))))
+    .range([400 - margin.bottom, margin.top]);
 
   let line = d3
     .line()
-    .x((d: any) => xScale(d[0]))
-    .y((d: any) => 500 - d[1]);
+    .x((d: any) => xScale(parseInt(d.day)))
+    .y((d: any) => yScale(parseInt(d.cycle)));
 
-  let result = line(list);
+  let result = line(data);
   console.log(result);
 
   return (
